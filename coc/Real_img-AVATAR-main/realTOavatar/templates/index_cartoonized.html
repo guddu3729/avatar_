@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>AVATARic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.js"></script>
+    <style>
+        body {
+            background-color: rgb(43, 211, 82);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ui padded centered grid">
+        <!-- Flash messages -->
+        <div class="row">
+            <div class="center aligned column">
+               
+                        <div style="height: 10%; display: flex; align-items: center; justify-content: center">
+                           
+                                <h3 style="color: {{ 'red' if category == 'error' else 'green' }}"></h3>
+                           
+                        </div>
+                   
+            </div>
+        </div>
+
+        <!-- Heading -->
+        <div class="row">
+            <div class="center aligned column">
+                <h1>Real image to AVATAR</h1>
+            </div>
+        </div>
+
+        <!-- Submission form -->
+        <div class="row">
+            <div class="center aligned column">
+                <form id="formsubmit" method="post" action="realTOavatar" enctype="multipart/form-data">
+                    <div id="uploadimage" class="ui button" style="align-items: center;">
+                        <i class="image icon"></i>
+                        Image
+                    </div>
+                    <input type="file" id="hiddeninputfile" accept="image/*" name="image" style="display: none" />
+                </form>
+            </div>
+        </div>
+
+        <!-- realTOavatard image display -->
+        
+        <div class="row">
+            <div class="column">
+                <div class="ui centered grid">
+                    <div class="row">
+                        <div class="center aligned column">
+                            <div class="ui centered card">
+                                <div class="image">
+                                    <img src="{{ realTOavatard_image }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <a href={{realTOavatard_image}} download>
+                            <button class="ui primary button">
+                                <i class="download icon"></i>
+                                Download
+                            </button><br>
+                            (Valid for 5 minutes only)
+                        </a>
+                    </div>
+                    <div class="row">
+                        <div class="ui stackable three column grid">
+                           
+                               
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="ui divider"></div>
+
+        <!-- Sample Images -->
+        <div class="row">
+            <div class="five wide column">
+                <img class="ui medium centered image" src="/static/sample_images/emma2.jpg">
+            </div>
+            <div class="five wide column">
+                <img class="ui medium centered image" src="/static/sample_images/emma2_realTOavatard.jpg">
+            </div>
+        </div>
+        <div class="row">
+            <div class="five wide column">
+                <img class="ui medium centered image" src="/static/sample_images/spice.jpeg">
+            </div>
+            <div class="five wide column">
+                <img class="ui medium centered image" src="/static/sample_images/spice_realTOavatard.jpeg">
+            </div>
+        </div>
+        <div class="row">
+            <div class="five wide column">
+                <img class="ui medium centered image" src="/static/sample_images/cake.jpeg">
+            </div>
+            <div class="five wide column">
+                <img class="ui medium centered image" src="/static/sample_images/cake_realTOavatard.jpeg">
+            </div>
+        </div>
+      
+
+        <div class="row">
+            <div class="center aligned column">
+                <h3><i class="copyright outline icon"></i> 2023 AvatarMaker</h3>
+                <h3>Made with <i class="heart icon"></i> by <a target="_blank" href="https://twitter.com/Mda21PN">Asif</a></h3>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('.ui.accordion').accordion();
+
+        $("#uploadimage").on("click", function () {
+            $('#hiddeninputfile').click();
+        });
+
+        document.getElementById("hiddeninputfile").onchange = function () {
+            $('#loader').removeClass('disabled').addClass('active');
+            document.getElementById("formsubmit").submit();
+        };
+    </script>
+</body>
+</html>
